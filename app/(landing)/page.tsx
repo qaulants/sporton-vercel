@@ -1,8 +1,10 @@
+import { getAllCategories } from "../services/category.service";
 import CategoriesSection from "./components/home/categories";
 import HeroSection from "./components/home/hero";
 import ProductsSection from "./components/home/products";
 
-export default function Home() {
+export default async function Home() {
+  await getAllCategories();
   return (
     <main>
       <HeroSection />
