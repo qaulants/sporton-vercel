@@ -11,7 +11,7 @@ const OrderConfirmed = () => {
         width={117}
         height={117}
         alt="order confirmed"
-        className="mb-4"
+        className="mb-8"
       />
       <h2 className="text-2xl font-semibold mb-2">Order Confirmed !!</h2>
       <p className="text-center mb-8">

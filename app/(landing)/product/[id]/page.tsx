@@ -4,13 +4,15 @@ import priceFormatter from "@/app/utils/price-formater";
 import { getProductDetail } from "@/app/services/product.service";
 import { getImageUrl } from "@/app/lib/api";
 
-type TPageProps = {
+export type TPageProps = {
   params: Promise<{id: string}>
 }
 
 const ProductDetail = async ({params}: TPageProps) => {
   const {id} = await params;
   const product = await getProductDetail(id);
+
+  // console.log("product stok", product.stock);
 
   return (
     <main className="container mx-auto py-30 px-17 flex gap-12 mb-15">
@@ -34,7 +36,7 @@ const ProductDetail = async ({params}: TPageProps) => {
             priceFormatter(product.price)
           }
         </div>
-        <ProductAction/>
+        <ProductAction product={product} stock={product.stock} />
       </div>
     </main>
   );

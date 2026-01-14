@@ -16,7 +16,7 @@ const OrderSubmitted = () => {
         width={117}
         height={117}
         alt="order submitted"
-        className="mb-4"
+        className="mb-8"
       />
       <h2 className="text-2xl font-semibold mb-2">Order Submitted !!</h2>
       <p className="text-center mb-8">
