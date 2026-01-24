@@ -70,7 +70,7 @@ const ProductModal = ({
       data.append("name", formData.name);
       data.append("price", formData.price.toString());
       data.append("stock", formData.stock.toString());
-      data.append("stock", formData.description);
+      data.append("description", formData.description);
       data.append("categoryId", formData.categoryId);
       if (imageFile) {
         data.append("image", imageFile);
@@ -129,6 +129,8 @@ const ProductModal = ({
         categoryId: "",
         description: "",
       });
+      setImageFile(null);
+      setImagePreview(null);
     }
   }, [isOpen, product]);
 
@@ -165,7 +167,7 @@ const ProductModal = ({
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="input-group-admin">
-                <label htmlFor="price">Price (IDR)</label>
+                <label htmlFor="productPrice">Price (IDR)</label>
                 <input 
                   type="number" 
                   id="price" 
@@ -184,8 +186,8 @@ const ProductModal = ({
             <div className="input-group-admin">
               <label htmlFor="category">Category</label>
               <select 
-                name="category" 
-                id="category" 
+                name="categoryId" 
+                id="categoryId" 
                 value={formData.categoryId} 
                 onChange={handleChange} 
               >

@@ -8,13 +8,14 @@ import ProductModal from "../../components/products/product-modal";
 import { Product } from "@/app/types";
 import { deleteProduct, getAllProducts } from "@/app/services/product.service";
 import { toast } from "react-toastify";
+import DeleteModal from "../../components/ui/delete-modal";
 
 const ProductManagement = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
-  const [productToDeleteId, setProductToDeletedId] = useState("");
+  const [productToDeleteId, setProductToDeleteId] = useState("");
 
   const fetchProduct = async () => {
     try {
@@ -33,18 +34,18 @@ const ProductManagement = () => {
   }
 
   const handleDelete = (id: string) => {
-    setProductToDeletedId(id);
+    setProductToDeleteId(id);
     setIsDeleteModalOpen(true);
   }
 
-  const hendleDeleteConfirm = async () => {
+  const handleDeleteConfirm = async () => {
     if(!productToDeleteId) return;
     try{
       await deleteProduct(productToDeleteId)
       fetchProduct();
       toast.success("Product deleted successfully");
       setIsDeleteModalOpen(false);
-      setProductToDeletedId("")
+      setProductToDeleteId("")
     } catch (error) {
       console.error("Failed to delete product", error);
       toast.error("Failed to delete product");
@@ -83,6 +84,7 @@ const ProductManagement = () => {
         isOpen={isModalOpen}
         onClose={handleCloseModal} 
       />
+      <DeleteModal isOpen={isDeleteModalOpen} onClose={() => setIsDeleteModalOpen(false)} onConfirm={handleDeleteConfirm} />
     </div>
   );
 };
