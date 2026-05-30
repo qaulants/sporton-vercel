@@ -21,6 +21,8 @@ html {
 
 * {
   @apply font-poppins;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 /* input-group */
